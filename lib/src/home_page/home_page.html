@@ -1,0 +1,15 @@
+<header>
+    <h1>Pagina inicial de pesquisa!</h1>
+</header>
+<body>
+    <div>
+        <form>
+            <input type="text" name="cidade cep" [(ngModel)]="cidadeCep" placeholder="Digite o CEP ou cidade">
+            <button type="submit" (click)="pesquisaDeClimaPorLocalidade()" ><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    <div *ngIf="showResults == true">
+        <p>
+        A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C</p>
+    </div>
+</body>
