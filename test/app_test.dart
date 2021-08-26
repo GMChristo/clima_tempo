@@ -1,8 +1,8 @@
 // @TestOn('browser')
 // import 'package:angular_test/angular_test.dart';
 // import 'package:test/test.dart';
-// import 'package:desafio_totvs_browser/app_component.dart';
-// import 'package:desafio_totvs_browser/app_component.template.dart' as ng;
+// import 'package:clima_tempo_browser/app_component.dart';
+// import 'package:clima_tempo_browser/app_component.template.dart' as ng;
 
 // void main() {
 //   final testBed =

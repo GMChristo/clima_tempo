@@ -1,4 +1,4 @@
-# desafio_totvs_browser
+# clima_tempo_browser
 
 A web app that uses [AngularDart](https://angulardart.dev) and
 [AngularDart Components](https://angulardart.dev/components).

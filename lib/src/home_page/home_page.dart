@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'dart:html';
-import 'package:desafio_totvs_browser/src/models/cidade_model.dart';
-import 'package:desafio_totvs_browser/src/models/clima_model.dart';
+import 'package:clima_tempo_browser/src/models/cidade_model.dart';
+import 'package:clima_tempo_browser/src/models/clima_model.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:angular/angular.dart';
