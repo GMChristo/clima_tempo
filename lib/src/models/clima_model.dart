@@ -4,7 +4,12 @@ class Clima {
   double tempMax;
   double umidade;
 
-  Clima();
+  Clima({
+    this.tempAtual,
+    this.tempMin,
+    this.tempMax,
+    this.umidade,
+  });
 
   Clima.fromMap(Map<String, dynamic> map) {
     tempAtual = map['temp'];
@@ -21,6 +26,4 @@ class Clima {
       'umidade': umidade,
     };
   }
-
-  
 }

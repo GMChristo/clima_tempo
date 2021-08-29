@@ -5,7 +5,13 @@ class Cidade {
   String bairro;
   String uf;
 
-  Cidade();
+  Cidade({
+    this.cep,
+    this.nome,
+    this.rua,
+    this.bairro,
+    this.uf,}
+  );
 
   Map<String, dynamic> toMap() {
     return {
