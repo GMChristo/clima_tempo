@@ -19,7 +19,7 @@ class Home implements OnInit {
   var cidadeCep;
   bool showResults = false;
   Clima clima;
-  Cidade cidade;
+  Cidade cidade = Cidade();
 
   @override
   void ngOnInit() {
@@ -33,7 +33,7 @@ class Home implements OnInit {
     } else {
       pesquisaPorCep();
     }
-    print(showResults);
+    // print(showResults);
   }
 
   void pesquisaPorCep() async {
@@ -55,6 +55,7 @@ class Home implements OnInit {
   }
 
   void pesquisaPorCidade(nomeCidade) async {
+    print('antes try $nomeCidade');
     try {
       var url = Uri.parse(
           'https://weather.contrateumdev.com.br/api/weather/city/?city=$nomeCidade');
@@ -64,7 +65,10 @@ class Home implements OnInit {
         var jsonResponse = jsonDecode(response.body);
         var temp = jsonResponse['main'];
         clima = Clima.fromMap(temp);
-        print('${clima.tempAtual}');
+        cidade.nome = nomeCidade;
+        print('cidade.nome: ${cidade.nome}');
+        print('nomeCidade: $nomeCidade');
+        // print('cidade.nome: ${cidade.nome}');
         showResults = true;
       } else {
         print(response.reasonPhrase);

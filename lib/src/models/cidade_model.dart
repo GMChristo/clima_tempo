@@ -10,7 +10,8 @@ class Cidade {
     this.nome,
     this.rua,
     this.bairro,
-    this.uf,}
+    this.uf,
+    }
   );
 
   Map<String, dynamic> toMap() {
