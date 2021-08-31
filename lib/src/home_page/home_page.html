@@ -9,7 +9,12 @@
         </form>
     </div>
     <div *ngIf="showResults == true">
-        <p>
-        A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C</p>
+        <button >
+            <p>
+                A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C
+                <i class="fas fa-info-circle"></i>
+                <a href="#/climaDetalhado"></a>
+            </p>
+        </button>
     </div>
 </body>
