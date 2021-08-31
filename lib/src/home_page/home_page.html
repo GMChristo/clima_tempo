@@ -1,20 +1,25 @@
 <header>
     <h1>Home page clima tempo pessoal!</h1>
 </header>
+
 <body>
     <div>
         <form>
             <input type="text" name="cidade cep" [(ngModel)]="cidadeCep" placeholder="Digite o CEP ou cidade">
-            <button type="submit" (click)="pesquisaDeClimaPorLocalidade()" ><i class="fas fa-search"></i></button>
+            <button type="submit" (click)="pesquisaDeClimaPorLocalidade()"><i class="fas fa-search"></i></button>
         </form>
     </div>
     <div *ngIf="showResults == true">
-        <button >
+        <button>
             <p>
-                A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C
-                <i class="fas fa-info-circle"></i>
-                <a href="#/climaDetalhado"></a>
+                <a title="Clima detalhado" [routerLink]="RoutePaths.climaDetalhado.toUrl()"
+                    [routerLinkActive]="'active'">
+                    <i class="fas fa-info-circle">
+                        A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C
+                    </i>
+                </a>
             </p>
         </button>
     </div>
+
 </body>
