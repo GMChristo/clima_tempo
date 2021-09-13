@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:angular_router/angular_router.dart';
 import 'package:clima_tempo_browser/route_paths.dart';
 import 'package:clima_tempo_browser/routes.dart';
+import 'package:clima_tempo_browser/src/clima_detalhado/clima_detalhado.dart';
 import 'package:clima_tempo_browser/src/models/cidade_model.dart';
 import 'package:clima_tempo_browser/src/models/clima_model.dart';
+import 'package:clima_tempo_browser/src/service/clima_service.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:angular/angular.dart';
@@ -22,17 +24,24 @@ import 'package:angular_forms/angular_forms.dart';
     RoutePaths,
     Routes,
   ],
+  providers: [
+    ClassProvider(ClimaService),
+  ],
 )
-class Home implements OnInit {
+class Home {
   var cidadeCep;
   bool showResults = false;
   Clima clima;
   Cidade cidade = Cidade();
+  // ClimaDetalhado climaDetalhado = ClimaDetalhado();
+  final ClimaService _climaService;
 
-  @override
-  void ngOnInit() {
-    print('Pagina inicial ok!');
-  }
+  Home(this._climaService);
+
+  // @override
+  // void ngOnInit() {
+  //    print('Pagina inicial ok!');
+  // }
 
   void pesquisaDeClimaPorLocalidade() {
     var testeInt = int.tryParse(cidadeCep);
@@ -63,7 +72,7 @@ class Home implements OnInit {
   }
 
   void pesquisaPorCidade(nomeCidade) async {
-    print('antes try $nomeCidade');
+    // print('antes try $nomeCidade');
     try {
       var url = Uri.parse(
           'https://weather.contrateumdev.com.br/api/weather/city/?city=$nomeCidade');
@@ -73,10 +82,13 @@ class Home implements OnInit {
         var jsonResponse = jsonDecode(response.body);
         var temp = jsonResponse['main'];
         clima = Clima.fromMap(temp);
-        cidade.nome = nomeCidade;
-        print('cidade.nome: ${cidade.nome}');
-        print('nomeCidade: $nomeCidade');
+        clima.cidade = nomeCidade;
+        // cidade.nome = nomeCidade;
         // print('cidade.nome: ${cidade.nome}');
+        // print('clima.cidade: ${clima.cidade}');
+        // print('nomeCidade: $nomeCidade');
+        // print('cidade.nome: ${cidade.nome}');
+        _climaService.addClima(clima);
         showResults = true;
       } else {
         print(response.reasonPhrase);
@@ -84,5 +96,12 @@ class Home implements OnInit {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  void carregaDetalhes() {
+    List<Clima> listClima = _climaService.getAll();
+    print('carregaDetalhes: ${listClima[0].tempAtual}');
+    // print('carrega Detalhes: $clima');
+    // climaDetalhado.detalhes(clima);
   }
 }

@@ -12,7 +12,7 @@
     <div *ngIf="showResults == true">
         <button>
             <p>
-                <a title="Clima detalhado" [routerLink]="RoutePaths.climaDetalhado.toUrl()"
+                <a title="Clima detalhado" [routerLink]="RoutePaths.climaDetalhado.toUrl()" (click)="carregaDetalhes()"
                     [routerLinkActive]="'active'">
                     <i class="fas fa-info-circle">
                         A temperatura na localidade ({{cidade.nome}}) pesquisada é de {{clima.tempAtual}}°C

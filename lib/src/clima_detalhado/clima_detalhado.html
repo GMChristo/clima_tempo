@@ -1,18 +1,22 @@
 <div>
     <div>
-        <h5>Localidade </h5>
+        <h2>Localidade </h2>
     </div>
-    <div class="row">
+    <div *ngIf="showDetalhes==false">
+        vazio!
+    </div>
+    <div class="row" *ngIf="showDetalhes==true">
         <div class="column">
+            <p>teste {{climaDetalhes.tempAtual}}</p>
             <ul>
-                <li>Temperatura atual: </li>
-                <li>Umidade: </li>
+                <li>Temperatura atual: {{climaDetalhes.tempAtual}}</li>
+                <li>Umidade: {{climaDetalhes.umidade}}</li>
             </ul>
         </div>
         <div class="column">
             <ul>
-                <li>Temperatura Maxima: </li>
-                <li>Temperatura Minima: </li>
+                <li>Temperatura Maxima: {{climaDetalhes.tempMax}}</li>
+                <li>Temperatura Minima: {{climaDetalhes.tempMin}}</li>
             </ul>
         </div>
     </div>
